@@ -1,0 +1,11 @@
+name: kubernetes-external-influxdb
+summary: This charm creates external services for Influxdb.
+maintainer: Sander Borny <sander.borny@ugent.be>
+description: |
+  This charm provides external (Influxdb) service requests to a kubernetes-deployer charm.
+requires:
+  influxdb:
+    interface: influxdb-api
+    scope: container
+subordinate: true
+series: ['xenial']
