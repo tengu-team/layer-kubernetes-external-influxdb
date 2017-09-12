@@ -7,5 +7,8 @@ requires:
   influxdb:
     interface: influxdb-api
     scope: container
+provides:
+  influxdb-service:
+    interface: kubernetes-service-influxdb
 subordinate: true
 series: ['xenial']

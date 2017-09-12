@@ -32,3 +32,9 @@ def set_up(influxdb):
         configure_headless_service(ips=[connection_info['hostname']()],
                                    port=connection_info['port']())
         set_state('k8s-external-influxdb.requested')
+
+
+@when('influxdb-service.available')
+def service_requested(relation):
+    log("Sending service_name if possible")
+    relation.send_service_name(unitdata.kv().get('service_name', ''))

@@ -1,1 +1,2 @@
-includes: ['layer:kubernetes-external-service', 'interface:influxdb-api']
+includes: ['layer:kubernetes-external-service', 'interface:influxdb-api', 'interface:kubernetes-service-influxdb']
+repo: git@github.com:tengu-team/layer-kubernetes-external-influxdb.git
