@@ -34,7 +34,14 @@ def set_up(influxdb):
         set_state('k8s-external-influxdb.requested')
 
 
-@when('influxdb-service.available')
-def service_requested(relation):
+@when('influxdb-service.available', 'kubernetes-deployer.available')
+def service_requested(relation, deployer):
     log("Sending service_name if possible")
     relation.send_service_name(unitdata.kv().get('service_name', ''))
+
+
+@when('influxdb-service.available')
+@when_not('kubernetes-deployer.available')
+def service_requested(relation):
+    log("Sending empty service_name")
+    relation.send_service_name('')
